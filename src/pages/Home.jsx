@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
 import TopMovieRibbon from '../components/TopMovieRibbon'
 import RandomMovies from '../components/RandomMovies'
 import MovieDetails from '../components/MovieDetails'
+import { AppContext } from '../AppContext.jsx'
 
 export default function Home() {
+    const { movieList } = useContext(AppContext);
+    const [selectedMovie, setSelectedMovie] = useState(movieList[0]);
+
     return (
         <div>
             <header className="bg-gray-300 shadow-md">
@@ -13,10 +17,10 @@ export default function Home() {
                 </div>
             </header>
             <Navbar></Navbar>
-            <TopMovieRibbon></TopMovieRibbon>
+            <TopMovieRibbon setSelectedMovie = {setSelectedMovie}></TopMovieRibbon>
             <div className="flex w-full items-start">
-                <MovieDetails></MovieDetails>
-                <RandomMovies></RandomMovies>
+                <MovieDetails selectedMovie = {selectedMovie}></MovieDetails>
+                <RandomMovies setSelectedMovie = {setSelectedMovie}></RandomMovies>
             </div>
         </div>
     )
