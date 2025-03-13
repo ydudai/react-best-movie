@@ -6,7 +6,7 @@ export function getMovieList() {
                 "title": "The Shawshank Redemption",
                 "rating": 4.65,
                 "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-                "fileName": "Showshank-redemption.jpg"
+                "fileName": "showshank-redemption.jpg"
             },
             {
                 "id": 2,
