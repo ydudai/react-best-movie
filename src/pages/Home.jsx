@@ -43,7 +43,7 @@ export default function Home() {
                 }
 
                 {/* Random Movies & Search Components */}
-                {isSerachMovie ? (<SearchMovie></SearchMovie>)
+                {isSerachMovie ? (<SearchMovie setSelectedMovie={setSelectedMovie}></SearchMovie>)
                     : <RandomMovies setSelectedMovie={setSelectedMovie} ></RandomMovies>
                 }
 
