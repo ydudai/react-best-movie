@@ -3,7 +3,7 @@ import React from 'react'
 export default function Navbar(props) {
   const setIsAddNewMovie = props.setIsAddNewMovie
   const setIsDeleteMovie = props.setIsDeleteMovie
- const setIsSerachMovie = props.setIsSerachMovie
+  const setIsSerachMovie = props.setIsSerachMovie
 
   const selectComponent = (e) => {
     //e.preventDefault();

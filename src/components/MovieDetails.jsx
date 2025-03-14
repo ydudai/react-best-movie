@@ -13,12 +13,12 @@ export default function MovieDetails(props) {
           <h2 className="text-sm">{selectedMovie.title}</h2>
         </div>
         <div className="flex-none">
-          <img src={imagePath + selectedMovie.fileName}  alt={selectedMovie.fileName} width="126" height="190"></img>
-          <h2 className="block text-sm font-medium text-gray-700 mb-1">Moview Description:</h2>
+          <img src={imagePath + selectedMovie.fileName} alt={selectedMovie.fileName} width="126" height="190"></img>
+          <h2 className="block text-sm font-medium text-gray-700 mb-1">Movie Description:</h2>
           <textarea value={selectedMovie.description} rows="3" cols="50" readOnly></textarea>
           <NumberSelector></NumberSelector>
         </div>
-     </div>
+      </div>
     </div>
   )
 }

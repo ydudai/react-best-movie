@@ -9,13 +9,15 @@ import DeleteMovie from './DeleteMovie.jsx'
 import SearchMovie from './SearchMovie.jsx'
 
 export default function Home() {
-    const { movieList } = useContext(AppContext);
+    const { movieList,  setMovieList} = useContext(AppContext);
+    movieList.sort((a, b) => b.rating - a.rating);
+
     const [selectedMovie, setSelectedMovie] = useState(movieList[0]);
     const [isAddNewMovie, setIsAddNewMovie] = useState(false);
     const [isDeleteMovie, setIsDeleteMovie] = useState(false);
     const [isSerachMovie, setIsSerachMovie] = useState(false);
 
-    return (
+     return (
         <div>
             {/* Header message */}
             <header className="bg-gray-300 shadow-md">
@@ -34,7 +36,7 @@ export default function Home() {
 
                 {/* MovieDetails - AddNewMovie - DeleteMovie  Components*/}
                 {isAddNewMovie ?
-                    (<AddNewMovie></AddNewMovie>)
+                    (<AddNewMovie setIsAddNewMovie={setIsAddNewMovie} setIsDeleteMovie={setIsDeleteMovie} setIsSerachMovie={setIsSerachMovie} setSelectedMovie={setSelectedMovie}></AddNewMovie>)
                     : isDeleteMovie ?
                         (<DeleteMovie></DeleteMovie>)
                         : (<MovieDetails selectedMovie={selectedMovie}></MovieDetails>)
