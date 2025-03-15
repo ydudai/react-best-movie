@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, {  useContext, useState, useEffect } from 'react';
+import { AppContext } from '../AppContext';
 
-export default function NumberSelector() {
+export default function NumberSelector(props) {
     const [selectedNumber, setSelectedNumber] = useState(null);
+
+    // Initial average
+    const [averageRate, setAverageRate] = useState(null);
+    useEffect(() => {
+        const initialAvg = movieList.reduce((a, { rating }) => a + rating, 0) / movieList.length;
+        setAverageRate(initialAvg.toFixed(2))
+    }, []);
+
+    const { movieList, setMovieList } = useContext(AppContext);   
     const numbers = [1, 2, 3, 4, 5];
-     let averageRate = 4.5; 
+    const updateMovieRating = (movieId, number) => {
+        setMovieList(movieList.map(movie =>
+            movie.id === movieId ? { ...movie, rating: number } : movie
+        ));
+    };
 
     const handleNumberSelect = (number) => {
         setSelectedNumber(number);
+        updateMovieRating(props.movie.id, number)
+
+        const avg = movieList.reduce((a, { rating }) => a + rating, 0) / movieList.length;
+        console.log(avg.toFixed(2));
+        setAverageRate(avg.toFixed(2))
     };
+
 
     return (
         <div className="p-1 max-w-min">
@@ -26,9 +46,9 @@ export default function NumberSelector() {
                             {number}
                         </button>
                     ))}
-                     <div className='ml-10 mr-10 font-bold'>{averageRate}</div>
+                    <div className='ml-10 mr-10 font-bold'>{averageRate}</div>
                 </div>
-                
+
             </div>
         </div>
     )

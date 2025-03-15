@@ -16,7 +16,7 @@ export default function MovieDetails(props) {
           <img src={imagePath + selectedMovie.fileName} alt={selectedMovie.fileName} width="126" height="190"></img>
           <h2 className="block text-sm font-medium text-gray-700 mb-1">Movie Description:</h2>
           <textarea value={selectedMovie.description} rows="3" cols="50" readOnly></textarea>
-          <NumberSelector></NumberSelector>
+          <NumberSelector movie={selectedMovie}></NumberSelector>
         </div>
       </div>
     </div>
